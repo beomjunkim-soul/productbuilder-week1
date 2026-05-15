@@ -89,8 +89,11 @@ class LottoBall extends HTMLElement {
 customElements.define('lotto-ball', LottoBall);
 
 const generateBtn = document.querySelector('.generate-btn');
+const themeToggle = document.querySelector('.theme-toggle');
+const themeToggleLabel = document.querySelector('.theme-toggle-label');
 const lottoBallsContainer = document.querySelector('.lotto-balls-container');
 const drawStatus = document.querySelector('.draw-status');
+const themeStorageKey = 'lotto-theme';
 
 function generateUniqueNumbers(count, max) {
     const numbers = new Set();
@@ -137,8 +140,30 @@ function generateDraw() {
     }, 420);
 }
 
+function applyTheme(theme) {
+    const isDark = theme === 'dark';
+    document.body.classList.toggle('dark-mode', isDark);
+    themeToggle.setAttribute('aria-pressed', String(isDark));
+    themeToggleLabel.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    localStorage.setItem(themeStorageKey, theme);
+}
+
+function getInitialTheme() {
+    const savedTheme = localStorage.getItem(themeStorageKey);
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+        return savedTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
 generateBtn.addEventListener('click', generateDraw);
+themeToggle.addEventListener('click', () => {
+    const nextTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+    applyTheme(nextTheme);
+});
 
 window.addEventListener('load', () => {
+    applyTheme(getInitialTheme());
     renderNumbers();
 });
