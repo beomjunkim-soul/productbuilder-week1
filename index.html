@@ -1,14 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 넘버 만들기</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <main class="app-shell">
+        <section class="generator-panel" aria-labelledby="app-title">
+            <div class="panel-copy">
+                <p class="eyebrow">빨리 골라</p>
+                <h1 id="app-title">로또 넘버 만들기</h1>
+                <p class="subtitle">Tap generate for six unique picks with a bonus ball, sorted and ready for your next draw.</p>
+            </div>
+
+            <div class="machine" aria-hidden="true">
+                <div class="machine-window">
+                    <span class="float-ball ball-a">12</span>
+                    <span class="float-ball ball-b">31</span>
+                    <span class="float-ball ball-c">7</span>
+                    <span class="float-ball ball-d">44</span>
+                    <span class="float-ball ball-e">19</span>
+                </div>
+            </div>
+
+            <section class="result-area" aria-live="polite" aria-label="Generated lotto numbers">
+                <div class="result-header">
+                    <span>Your Numbers</span>
+                    <span class="draw-status">Ready</span>
+                </div>
+                <div class="lotto-balls-container"></div>
+            </section>
+
+            <div class="actions">
+                <button class="generate-btn" type="button">
+                    <span class="button-icon" aria-hidden="true"></span>
+                    Generate Numbers
+                </button>
+                <p class="range-note">Main balls 1-45. Bonus ball 1-20.</p>
+            </div>
+        </section>
+    </main>
+    <script src="main.js"></script>
 </body>
 </html>
