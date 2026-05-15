@@ -144,7 +144,8 @@ function applyTheme(theme) {
     const isDark = theme === 'dark';
     document.body.classList.toggle('dark-mode', isDark);
     themeToggle.setAttribute('aria-pressed', String(isDark));
-    themeToggleLabel.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    themeToggle.setAttribute('aria-label', isDark ? '화이트 모드로 전환' : '다크 모드로 전환');
+    themeToggleLabel.textContent = isDark ? '화이트 모드' : '다크 모드';
     localStorage.setItem(themeStorageKey, theme);
 }
 
