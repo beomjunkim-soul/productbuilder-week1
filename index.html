@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,37 +12,25 @@
             <div class="panel-copy">
                 <p class="eyebrow">빨리 골라</p>
                 <h1 id="app-title">로또 넘버 만들기</h1>
-                <p class="subtitle">Tap generate for six unique picks with a bonus ball, sorted and ready for your next draw.</p>
-            </div>
-
-            <div class="machine" aria-hidden="true">
-                <div class="machine-window">
-                    <span class="float-ball ball-a">12</span>
-                    <span class="float-ball ball-b">31</span>
-                    <span class="float-ball ball-c">7</span>
-                    <span class="float-ball ball-d">44</span>
-                    <span class="float-ball ball-e">19</span>
-                </div>
+                <p class="subtitle">버튼을 누르면 중복 없는 6개 번호와 보너스 번호를 바로 만들 수 있어요.</p>
             </div>
 
             <section class="result-area" aria-live="polite" aria-label="Generated lotto numbers">
                 <div class="result-header">
-                    <span>Your Numbers</span>
-                    <span class="draw-status">Ready</span>
+                    <span>추천 번호</span>
+                    <span class="draw-status">준비</span>
                 </div>
                 <div class="lotto-balls-container"></div>
             </section>
 
             <div class="actions">
                 <button class="generate-btn" type="button">
-                    <span class="button-icon" aria-hidden="true"></span>
-                    Generate Numbers
+                    번호 만들기
                 </button>
                 <button class="theme-toggle" type="button" aria-pressed="false" aria-label="다크 모드로 전환">
-                    <span class="theme-toggle-icon" aria-hidden="true"></span>
                     <span class="theme-toggle-label">다크 모드</span>
                 </button>
-                <p class="range-note">Main balls 1-45. Bonus ball 1-20.</p>
+                <p class="range-note">기본 번호 1-45. 보너스 번호 1-20.</p>
             </div>
         </section>
     </main>

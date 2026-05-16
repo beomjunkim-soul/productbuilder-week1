@@ -11,45 +11,31 @@ class LottoBall extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style>
                 :host {
-                    --ball-start: #ffffff;
-                    --ball-mid: #f7c64d;
-                    --ball-end: #e95f4f;
                     display: grid;
                     place-items: center;
                     width: clamp(56px, 12vw, 82px);
-                    aspect-ratio: 1;
-                    border-radius: 50%;
-                    background:
-                        radial-gradient(circle at 33% 25%, var(--ball-start) 0 12%, transparent 13%),
-                        radial-gradient(circle at 35% 30%, var(--ball-mid), var(--ball-end) 72%);
-                    color: #1c212b;
+                    min-height: clamp(56px, 12vw, 82px);
+                    border: 1px solid var(--tile-border, rgba(23, 32, 51, 0.12));
+                    border-radius: 8px;
+                    background: var(--tile-bg, #f8fafc);
+                    color: inherit;
                     font-size: clamp(1.1rem, 4vw, 1.75rem);
                     font-weight: 800;
-                    box-shadow:
-                        inset -10px -14px 20px rgba(113, 34, 34, 0.25),
-                        inset 7px 8px 14px rgba(255, 255, 255, 0.55),
-                        0 18px 32px rgba(17, 24, 39, 0.18);
                     position: relative;
-                    transform: translateY(24px) scale(0.72) rotate(-18deg);
+                    transform: translateY(12px);
                     opacity: 0;
-                    animation: settle 650ms cubic-bezier(.2, .95, .25, 1.25) forwards;
+                    animation: settle 360ms ease forwards;
                     animation-delay: ${delay};
                 }
 
                 :host([bonus]) {
-                    --ball-mid: #8bd7ff;
-                    --ball-end: #3e7cf4;
-                    color: #07162f;
+                    border-color: var(--accent, #2563eb);
                 }
 
                 .number {
                     display: grid;
                     place-items: center;
-                    width: 58%;
-                    aspect-ratio: 1;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.84);
-                    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+                    width: 100%;
                     line-height: 1;
                 }
 
@@ -68,15 +54,11 @@ class LottoBall extends HTMLElement {
                 @keyframes settle {
                     0% {
                         opacity: 0;
-                        transform: translateY(-28px) scale(0.66) rotate(-24deg);
-                    }
-                    70% {
-                        opacity: 1;
-                        transform: translateY(4px) scale(1.06) rotate(7deg);
+                        transform: translateY(12px);
                     }
                     100% {
                         opacity: 1;
-                        transform: translateY(0) scale(1) rotate(0);
+                        transform: translateY(0);
                     }
                 }
             </style>
@@ -110,7 +92,7 @@ function buildBall(number, index, isBonus = false) {
 
     if (isBonus) {
         lottoBall.setAttribute('bonus', '');
-        lottoBall.setAttribute('label', 'Bonus');
+        lottoBall.setAttribute('label', '보너스');
     }
 
     return lottoBall;
@@ -129,13 +111,13 @@ function renderNumbers() {
 
 function generateDraw() {
     generateBtn.disabled = true;
-    drawStatus.textContent = 'Drawing';
+    drawStatus.textContent = '생성 중';
     lottoBallsContainer.classList.add('is-drawing');
 
     window.setTimeout(() => {
         renderNumbers();
         lottoBallsContainer.classList.remove('is-drawing');
-        drawStatus.textContent = 'Complete';
+        drawStatus.textContent = '완료';
         generateBtn.disabled = false;
     }, 420);
 }
