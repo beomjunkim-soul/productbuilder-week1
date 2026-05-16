@@ -3,37 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로또 넘버 만들기</title>
+    <title>동물상 테스트</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="app-shell">
-        <section class="generator-panel" aria-labelledby="app-title">
-            <div class="panel-copy">
-                <p class="eyebrow">빨리 골라</p>
-                <h1 id="app-title">로또 넘버 만들기</h1>
-                <p class="subtitle">버튼을 누르면 중복 없는 6개 번호와 보너스 번호를 바로 만들 수 있어요.</p>
-            </div>
+        <section class="tester-panel" aria-labelledby="app-title">
+            <header class="panel-header">
+                <p class="eyebrow">AI 얼굴상 분석</p>
+                <h1 id="app-title">동물상 테스트</h1>
+                <p class="subtitle">사진이나 카메라로 강아지상과 고양이상 중 더 가까운 결과를 확인해보세요.</p>
+            </header>
 
-            <section class="result-area" aria-live="polite" aria-label="Generated lotto numbers">
-                <div class="result-header">
-                    <span>추천 번호</span>
-                    <span class="draw-status">준비</span>
+            <section class="workspace" aria-label="테스트 영역">
+                <div class="preview-card">
+                    <div class="preview-frame">
+                        <img class="image-preview" alt="선택한 이미지 미리보기" hidden>
+                        <div class="webcam-preview" aria-label="카메라 미리보기"></div>
+                        <p class="empty-preview">이미지 또는 카메라 화면</p>
+                    </div>
+                    <div class="controls">
+                        <label class="file-button">
+                            <input class="image-input" type="file" accept="image/*">
+                            사진 선택
+                        </label>
+                        <button class="webcam-button" type="button">카메라 켜기</button>
+                        <button class="analyze-button" type="button" disabled>분석하기</button>
+                    </div>
                 </div>
-                <div class="lotto-balls-container"></div>
-            </section>
 
-            <div class="actions">
-                <button class="generate-btn" type="button">
-                    번호 만들기
-                </button>
-                <button class="theme-toggle" type="button" aria-pressed="false" aria-label="다크 모드로 전환">
-                    <span class="theme-toggle-label">다크 모드</span>
-                </button>
-                <p class="range-note">기본 번호 1-45. 보너스 번호 1-20.</p>
-            </div>
+                <aside class="result-card" aria-live="polite">
+                    <p class="result-kicker">결과</p>
+                    <h2 class="result-title">대기 중</h2>
+                    <p class="result-copy">모델을 불러오는 중입니다.</p>
+                    <div class="meter-list"></div>
+                    <p class="model-status">모델 준비 중</p>
+                </aside>
+            </section>
         </section>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
