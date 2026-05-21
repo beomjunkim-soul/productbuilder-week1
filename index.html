@@ -69,11 +69,34 @@
                     <button class="submit-button" type="submit">문의 보내기</button>
                 </form>
             </section>
+
+            <section class="comments-section" aria-labelledby="comments-title">
+                <div class="comments-copy">
+                    <p class="eyebrow">Comments</p>
+                    <h2 id="comments-title">댓글</h2>
+                </div>
+                <div id="disqus_thread"></div>
+            </section>
         </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
+    <script>
+        var disqus_config = function () {
+            this.page.url = 'https://productbuilder-week1-116-5730e.web.app/';
+            this.page.identifier = 'animal-type-test-home';
+        };
+
+        (function() {
+            var d = document;
+            var s = d.createElement('script');
+            s.src = 'https://productbuilder-dgemhowiqp.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>댓글을 보려면 JavaScript를 활성화해 주세요.</noscript>
 </body>
 </html>

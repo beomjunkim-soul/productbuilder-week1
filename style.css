@@ -328,6 +328,31 @@ h1 {
     background: var(--accent-strong);
 }
 
+.comments-section {
+    display: grid;
+    gap: 1rem;
+    padding-top: clamp(1rem, 3vw, 1.5rem);
+    border-top: 1px solid var(--line);
+}
+
+.comments-copy {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.comments-copy h2 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.05;
+}
+
+#disqus_thread {
+    min-height: 18rem;
+    padding: clamp(1rem, 3vw, 1.4rem);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+}
+
 @media (max-width: 820px) {
     .workspace,
     .partner-section {
