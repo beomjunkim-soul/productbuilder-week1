@@ -25,7 +25,8 @@ body {
 }
 
 button,
-input {
+input,
+textarea {
     font: inherit;
 }
 
@@ -250,8 +251,86 @@ h1 {
     cursor: wait;
 }
 
+.partner-section {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1.2fr);
+    gap: clamp(1rem, 3vw, 1.5rem);
+    align-items: start;
+    padding-top: clamp(1rem, 3vw, 1.5rem);
+    border-top: 1px solid var(--line);
+}
+
+.partner-copy {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.partner-copy h2 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.05;
+}
+
+.partner-form {
+    display: grid;
+    gap: 0.9rem;
+    padding: clamp(1rem, 3vw, 1.4rem);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+}
+
+.partner-form label {
+    display: grid;
+    gap: 0.4rem;
+    color: var(--ink);
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.partner-form input,
+.partner-form textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 0.85rem 0.9rem;
+    color: var(--ink);
+    background: #ffffff;
+    outline: none;
+}
+
+.partner-form textarea {
+    min-height: 8.5rem;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.partner-form input:focus,
+.partner-form textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+.submit-button {
+    min-height: 3.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 0 1rem;
+    color: #ffffff;
+    background: var(--accent);
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.submit-button:hover,
+.submit-button:focus-visible {
+    background: var(--accent-strong);
+}
+
 @media (max-width: 820px) {
-    .workspace {
+    .workspace,
+    .partner-section {
         grid-template-columns: 1fr;
     }
 
